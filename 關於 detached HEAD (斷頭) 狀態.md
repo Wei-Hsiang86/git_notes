@@ -34,6 +34,7 @@ git checkout -b branch-name
 參考：
 1. [與 Claude 的對話：Git HEAD、detached HEAD](https://claude.ai/chat/e9c428c2-7040-47bb-96f0-8fb82702b324)
 2. [git 分支](git%20分支.md)
+3. [git 清除機制](git%20清除機制.md)
 ### - 需要 detached HEAD 的狀況
 
 - 檢查歷史狀態

@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "df29a9fcff3353f4",
+        "id": "d4dd31baa8666843",
         "type": "tabs",
         "children": [
           {
-            "id": "f7d1a2d973fcb2b5",
+            "id": "1c5fa0d8c40ea4c4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "git 分支.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新分頁"
+              "title": "git 分支"
             }
           }
         ]
@@ -162,10 +166,12 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "a70217c7912961da",
+  "active": "1c5fa0d8c40ea4c4",
   "lastOpenFiles": [
-    "關於 detached HEAD (斷頭) 狀態.md",
+    "git 清除機制.md",
     "git 分支.md",
+    "關於 detached HEAD (斷頭) 狀態.md",
+    "學習路徑.md",
     "git reset 與 git rebase.md",
     "git 基礎.md",
     "git stash.md",
@@ -175,7 +181,6 @@
     "git ignore.md",
     "git cherry pick.md",
     "git 遠端儲存庫.md",
-    "git 協作.md",
-    "git 清除機制.md"
+    "git 協作.md"
   ]
 }
