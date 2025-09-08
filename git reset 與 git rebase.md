@@ -1,7 +1,9 @@
 Git 有三個重要區域：
+
 - **工作目錄 Working Directory**：實際編輯檔案的地方
 - **暫存區 Staging Area**：用 `git add` 後檔案存放的地方
 - **儲存庫 Repository**：用 `git commit` 後檔案存放的地方
+
 ### - Git Reset
 
 `git reset` 主要用於撤銷或重設當前 branch 狀態到指定的 commit，影響的是==這個 commit (不含他自己) 之後的所有 commit==。指定的時候可以用 hash 值，也可以用 HEAD 的相對位置表示
@@ -12,36 +14,48 @@ Git 有三個重要區域：
       HEAD~3     HEAD~2    HEAD~1      HEAD~0
 ```
 
-HEAD~1 跟 HEAD^ 同義，HEAD~2 跟 HEAD^^ 同義，但數字的方式更為直觀。這裡有個小觀念可以注意，在 Git 的內部儲存機制中：
+`HEAD~1` 跟 `HEAD^` 同義，`HEAD~2` 跟 `HEAD^^` 同義，但數字的方式更為直觀。這裡有個小觀念可以注意，在 Git 的內部儲存機制中：
+
 - **每個 commit 都記錄著它的父 commit**
 - **但父 commit 不知道誰是它的子 commit**
-所以才會用「HEAD^：HEAD 的父」，這樣的方式來表達
+  所以才會用「HEAD^：HEAD 的父」，這樣的方式來表達
+
 #### ▸ 三種模式
+
 ##### 1. `git reset --soft <commit>`：只移動 HEAD 指標到指定的 commit
-- ✓ 移動 HEAD 指標到指定的 commit   
+
+- ✓ 移動 HEAD 指標到指定的 commit
 - ✓ 暫存區保持不變（檔案還在 staging）
 - ✓ 工作目錄保持不變
 - 📝 **結果**：就像剛執行完 `git add .` 準備要 commit
-**使用時機**：想要**重新整理 commit 訊息**，或合併多個 commit
+  **使用時機**：想要**重新整理 commit 訊息**，或合併多個 commit
+
 ##### 2. `git reset --mixed <commit>` (預設)：移動 HEAD 指標，且撤回 commit
+
 - ✓ 移動 HEAD 指標到指定的 commit
 - △ 清空暫存區（撤銷 `git add`，==但保留在工作目錄中==）
 - ✓ 工作目錄保持不變
 - 📝 **結果**：就像剛修改完檔案，還沒執行 `git add`
-**使用時機**：想要**重新選擇哪些檔案**要加入下次 commit
+  **使用時機**：想要**重新選擇哪些檔案**要加入下次 commit
+
 ##### 3. `git reset --hard <commit>`：移動 HEAD 指標，且心血全部蛋雕
+
 - ✓ 移動 HEAD 指標到指定的 commit
 - △ 清空暫存區
 - △ 工作目錄恢復到指定 commit 的狀態（==在這之後新增的所有東西都消失==）
 - 📝 **結果**：就像時光倒流回，指定 commit 剛完成的時候
-**使用時機**：確定想要完全放棄之後的所有變更
-⚠️ **危險！** 會永久刪除檔案變更，使用前請確認
+  **使用時機**：確定想要完全放棄之後的所有變更
+  ⚠️ **危險！** 會永久刪除檔案變更，使用前請確認
+
 ##### 4. 重要提醒
+
 - 所有 `git reset` 都不會造成 detached HEAD（HEAD 仍指向當前分支）
 - 被重置的 commit 會變成 unreachable objects，最終被 git 的回收機制清除
 - 使用 `git reflog` 可以找回被 reset 的 commit
 - 重要變更前建議先建立分支備份：`git branch backup`
+
 ##### 5. 記憶口訣
+
 - **soft**：「溫柔地」只移動 HEAD，什麼都不刪
 - **mixed**：「混合地」移動 HEAD + 清暫存區
 - **hard**：「強硬地」全部重置，什麼都不留
@@ -50,31 +64,41 @@ HEAD~1 跟 HEAD^ 同義，HEAD~2 跟 HEAD^^ 同義，但數字的方式更為直
 - `--soft` 和 `--mixed` 都會保留檔案變更
 
 參考：
+
 1. [git 基礎](git%20基礎.md)
-2. [關於 detached HEAD (斷頭) 狀態](關於%20detached%20HEAD%20(斷頭)%20狀態.md)
+2. [關於 detached HEAD (斷頭) 狀態](<關於%20detached%20HEAD%20(斷頭)%20狀態.md>)
+
 ### - Git Rebase
 
 `git rebase` 主要用於重新應用一系列 commit 到==另一個基礎點上==，重寫 commit 歷史
+
 #### ▸ 常見用法
+
 ##### 1. 一般 rebase
-   ```bash
-   git rebase <base-commit>
-   ```
-   將**當前分支**的 commit 重新應用到指定的基礎點上。假設目前我在 main 分支，當執行 `git rebase dev1`，代表的意思是目前我是 main，我想要以 dev1 為基礎，對我進行 rebase，也就是 rebase on dev1
 
-   rebase 不是單純的複製貼上，因為 HASH 值是根據父檔 SHA-1 算出來的，所以當參照點改變，全部都會重算
+```bash
+git rebase <base-commit>
+```
 
-   另外，在 git 中可以注意執行動作的方向，這樣會讓 git 的動作理解更清楚。像是 push 就是推上遠端儲存庫，但 rebase 就是以指定分支為基準，rebase 我自己
-   
-   參考：[另一種合併方式（使用 rebase）](https://gitbook.tw/chapters/branch/merge-with-rebase)
+將**當前分支**的 commit 重新應用到指定的基礎點上。假設目前我在 main 分支，當執行 `git rebase dev1`，代表的意思是目前我是 main，我想要以 dev1 為基礎，對我進行 rebase，也就是 rebase on dev1
+
+rebase 不是單純的複製貼上，因為 HASH 值是根據父檔 SHA-1 算出來的，所以當參照點改變，全部都會重算
+
+另外，在 git 中可以注意執行動作的方向，這樣會讓 git 的動作理解更清楚。像是 push 就是推上遠端儲存庫，但 rebase 就是以指定分支為基準，rebase 我自己
+
+參考：[另一種合併方式（使用 rebase）](https://gitbook.tw/chapters/branch/merge-with-rebase)
+
 ##### 2. 互動式 rebase
-   ```bash
-   git rebase -i <起點>
-   ```
-   打開互動式編輯器，可以選擇如何處理每個 commit：重新排序、合併、修改或刪除
+
+```bash
+git rebase -i <起點>
+```
+
+打開互動式編輯器，可以選擇如何處理每個 commit：重新排序、合併、修改或刪除
 
 - 起點本身**不會**被編輯
 - 起點**之後**的所有 commit 才會進入編輯模式
+
 #### ▸ 功能與特點
 
 - 可以保留修改但重組 commit 歷史
@@ -82,17 +106,21 @@ HEAD~1 跟 HEAD^ 同義，HEAD~2 跟 HEAD^^ 同義，但數字的方式更為直
 - 產生更乾淨、線性的歷史記錄
 - 比 reset 更靈活，可以選擇性地處理特定的 commit
 - ==會產生孤兒 commit==，通常 git 會有回收機制
+
 #### ▸ 關於 git rebase 和工作目錄的關係
 
 1. **工作目錄狀態要求**：
+
    - 在開始 rebase 之前，Git 通常要求你的工作目錄是「乾淨的」，也就是沒有未提交的修改
    - 如果你有未暫存或未提交的變更，Git 會拒絕執行 rebase，以防止你的未提交變更被覆蓋或丟失
 
 2. **為什麼需要乾淨的工作目錄**：
+
    - Rebase 本質上是重新應用一系列 commit，這個過程可能會修改相同的檔案
    - 如果你的工作目錄有未提交的變更，這些變更可能會與 rebase 過程中的變更衝突
 
 3. **處理未提交變更的選項**：
+
    - 將變更提交：`git commit -m "暫時提交"`
    - 將變更暫存：`git stash`（rebase 完後可用 `git stash pop` 恢復）
    - 放棄變更：`git reset --hard`（謹慎使用，會丟失所有未提交的變更）
@@ -106,54 +134,66 @@ HEAD~1 跟 HEAD^ 同義，HEAD~2 跟 HEAD^^ 同義，但數字的方式更為直
 總結來說，為了安全起見，執行 rebase 前最好確保工作目錄是乾淨的，或者將變更暫時保存起來
 
 參考：
+
 1. [git rebase 遇到問題](git%20rebase%20遇到問題.md)
 2. [git 基礎](git%20基礎.md)
+
 #### ▸ git rebase -i 互動操作的動作
 
 互動式 rebase 中，時間順序是由遠到近的 (log 是最近的當第一，後續越來越久遠)，其中每個指令動作的意義：
 
 1. **pick (p)**：
+
    - 保留這個 commit，不做任何修改
    - 這是默認動作
 
 2. **reword (r)**：
+
    - 保留這個 commit，但修改其 commit 訊息
    - 執行時會打開編輯器讓你修改訊息
 
 3. **edit (e)**：
+
    - 暫停在這個 commit，讓你可以修改 commit 的內容
    - 可以用 `git commit --amend` 修改當前 commit
    - 修改完成後，使用 `git rebase --continue` 繼續
 
 4. **squash (s)**：
+
    - 將該 commit 合併到前一個(父) commit 中
    - 會打開編輯器讓你編輯合併後的 commit 訊息
    - 合併後的訊息預設包含兩個 commit 的訊息
 
 5. **fixup (f)**：
+
    - 類似 squash，但直接使用前一個 commit 的訊息
    - 不會打開編輯器讓你編輯訊息
    - 適合合併小修改或修正前一個 commit 的內容
 
 6. **drop (d)**：
+
    - 完全刪除該 commit
    - 注意：若此 commit 包含重要變更，可能會影響後續 commit
 
 7. **exec (x)**：
+
    - 執行一個 shell 命令
    - 用於在 rebase 過程中執行測試或檢查
 
 8. **break (b)**：
+
    - 在此處暫停 rebase 過程
    - 可讓你檢查中間狀態，然後手動繼續
 
 9. **label (l)**：
+
    - 為當前 HEAD 添加一個標籤
    - 主要用於複雜的 rebase 操作
 
 10. **reset (t)**：
-  - 重置 HEAD 到指定標籤
-  - 通常與 label 命令一起使用
+
+- 重置 HEAD 到指定標籤
+- 通常與 label 命令一起使用
 
 在實際使用中，最常用的指令是 `pick`、`reword`、`squash`、`fixup` 和 `drop`。其中 `squash` 和 `fixup` 特別實用於整理和合併相關的 commit
 
@@ -161,13 +201,14 @@ HEAD~1 跟 HEAD^ 同義，HEAD~2 跟 HEAD^^ 同義，但數字的方式更為直
 
 ### - Git Reset 與 Rebase 的主要差異
 
-| 特性     | Git Reset         | Git Rebase            |
-| ------ | ----------------- | --------------------- |
-| 主要目的   | 撤銷提交，重置狀態         | 重構歷史記錄，保持清潔的提交線       |
-| 對歷史的影響 | 直接丟棄某個點之後的所有提交    | 重新應用提交，保留變更但可能改變順序和內容 |
-| 操作複雜度  | 相對簡單              | 相對複雜，尤其是互動式 rebase    |
-| 適用場景   | 撤銷本地未推送的變更        | 整理提交歷史、合併分支前的準備工作     |
-| 風險程度   | 較高（尤其是 --hard 模式） | 中等（可能需要解決衝突）          |
+| 特性         | Git Reset                    | Git Rebase                                 |
+| ------------ | ---------------------------- | ------------------------------------------ |
+| 主要目的     | 撤銷提交，重置狀態           | 重構歷史記錄，保持清潔的提交線             |
+| 對歷史的影響 | 直接丟棄某個點之後的所有提交 | 重新應用提交，保留變更但可能改變順序和內容 |
+| 操作複雜度   | 相對簡單                     | 相對複雜，尤其是互動式 rebase              |
+| 適用場景     | 撤銷本地未推送的變更         | 整理提交歷史、合併分支前的準備工作         |
+| 風險程度     | 較高（尤其是 --hard 模式）   | 中等（可能需要解決衝突）                   |
+
 ### - 合併特定 Commit 的案例
 
 如果要合併兩個特定的 commit（如 66bcc45 和 d446349），互動式 rebase 是比較精確的工具：
@@ -197,21 +238,26 @@ squash 66bcc45 feat:add new docker notes about dockerfile
 另外有一個重點，因為 rebase 過後 HASH 值會變，所以說要 push 回去遠端 repo 的時候要小心，當然可以使用 `--force` 直接強推。但如果強制 push 前，團隊其他成員有 push 了，那就是滿嚴重的問題了
 
 建議使用下面這個方法：
+
 ```bash
 git push --force-with-lease origin main
 ```
+
 - 因為改變了歷史，需要使用強制推送
 - `--force-with-lease` 比純粹的 `--force` 更安全，它會檢查遠程分支在你 pull 之後是否有其他人的新提交
 
 這時候就可以安心通知團隊其他人員：「我對 main 分支進行了 rebase，你們需要重新拉取」
+
 ```bash
 git fetch
 git reset --hard origin/main
 ```
 
 參考：
+
 1. [git 基礎](git%20基礎.md)
 2. [git 協作](git%20協作.md)
+
 ### - 注意事項
 
 - 使用 `git reset --hard` 或 `git rebase` 前，最好先備份或確保你不需要被刪除的變更
