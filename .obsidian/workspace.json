@@ -1,0 +1,181 @@
+{
+  "main": {
+    "id": "37fc7401ce4ec774",
+    "type": "split",
+    "children": [
+      {
+        "id": "df29a9fcff3353f4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f7d1a2d973fcb2b5",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新分頁"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "73f8fd039acc2a2c",
+    "type": "split",
+    "children": [
+      {
+        "id": "33cd60cba6c17eda",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a70217c7912961da",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "檔案瀏覽器"
+            }
+          },
+          {
+            "id": "993d5a29d4beb6f2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜尋"
+            }
+          },
+          {
+            "id": "9e2117a7fa1a4283",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "書籤"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3fa403c44a1f55ff",
+    "type": "split",
+    "children": [
+      {
+        "id": "998de42c1e766aa5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eb3897165bdd8864",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向連結"
+            }
+          },
+          {
+            "id": "d7a72119281f443c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "對外連結"
+            }
+          },
+          {
+            "id": "348f048ee5ac9d70",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "標籤"
+            }
+          },
+          {
+            "id": "371fcc698b94d7e8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大綱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:開啟快速切換": false,
+      "graph:查看關聯圖": false,
+      "canvas:建立新畫布": false,
+      "daily-notes:開啟今天的每日筆記": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false,
+      "bases:建立新的 base": false
+    }
+  },
+  "active": "a70217c7912961da",
+  "lastOpenFiles": [
+    "關於 detached HEAD (斷頭) 狀態.md",
+    "git 分支.md",
+    "git reset 與 git rebase.md",
+    "git 基礎.md",
+    "git stash.md",
+    "git reflog.md",
+    "git rebase 遇到問題.md",
+    "git log.md",
+    "git ignore.md",
+    "git cherry pick.md",
+    "git 遠端儲存庫.md",
+    "git 協作.md",
+    "git 清除機制.md"
+  ]
+}
