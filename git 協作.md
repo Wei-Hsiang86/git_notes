@@ -1,10 +1,12 @@
 多人協作的基本工作流程是：
+
 - 將你的專案更新推送到遠端分支
 - 告知你的協作伙伴
 - 協作伙伴將遠端分支上的更新拉取到本地
 - 進行合併，可能要解決合併衝突
 
 另外，多人協作的時候要注意：
+
 1. 撰寫格式要一致
 2. 換行字元 (end of line / eol) 也要統一
 
@@ -12,20 +14,21 @@
 
 ### - git clone
 
-將要 clone 的東西從 git repository 拉下來。另外如果是先 fork 他人的專案，接著從自己的倉庫 clone 下來，clone 會自動幫我們設定好 upstream，所以接下來要 push 回去，只要執行 `git push` 指令而不需另外指定參數
+將要 clone 的東西從 git repository 拉下來。另外如果是先 fork 他人的專案，接著從自己的倉庫 clone 下來，clone 會自動幫我們設定好 upstream，所以接下來要 push 回去，只要執行  `git push`  指令而不需另外指定參數
 
 ### - git fetch
 
-讓本地端知道遠端有更新，此時可以用 `git fetch origin`，叫 Git 去檢查 `origin` 主機裡有沒有任何更新。本地端抓取了最新的遠端資訊後，就會更新線圖，把最新資訊反應出來：
+讓本地端知道遠端有更新，此時可以用  `git fetch origin`，叫 Git 去檢查  `origin`  主機裡有沒有任何更新。本地端抓取了最新的遠端資訊後，就會更新線圖，把最新資訊反應出來：
 
 ![Pasted image 20240426170132.png](Pasted%20image%2020240426170132.png)
 
 ![Pasted image 20240426170029.png](Pasted%20image%2020240426170029.png)
 
 ==如果 github 端 (遠端) 有做任何的更新，或是更改 origin 的 url (即便網址一樣)，都一定要先 fetch，這樣本地端才會抓到新的資訊。如果沒有 fetch 不管怎麼 merge 都不會合併==
+
 ### - git merge
 
-抓取到遠端分支後，就可以使用 `git merge` 來合併 origin/master (現在通常是用 main) 這條遠端分支，新的專案進度就會被合併到當前所在的分支上。另外，merge 後面一定要帶上合併的遠端分支，不然報錯
+抓取到遠端分支後，就可以使用  `git merge`  來合併 origin/master (現在通常是用 main) 這條遠端分支，新的專案進度就會被合併到當前所在的分支上。另外，merge 後面一定要帶上合併的遠端分支，不然報錯
 
 ```bash
 fatal: No remote for the current branch.
@@ -35,13 +38,13 @@ fatal: No remote for the current branch.
 
 ![Pasted image 20240426170149.png](Pasted%20image%2020240426170149.png)
 
-> 那到底平常要用比較快的 `git pull`，還是要用兩段式的 `git fetch` + `git merge` 呢？
+> 那到底平常要用比較快的  `git pull`，還是要用兩段式的  `git fetch` + `git merge`  呢？
 
 一般來說，如果你不知道 merge 後會發生什麼事，建議使用兩段式分開處理
 
-`git fetch` 本身只是更新遠端資訊，它不會影響到程式碼。可以隨時沒事就發出 `git fetch` 指令看一看其他人負責的分支是不是有新進度
+`git fetch`  本身只是更新遠端資訊，它不會影響到程式碼。可以隨時沒事就發出  `git fetch`  指令看一看其他人負責的分支是不是有新進度
 
-如果看了以後想要把 master 進度先拉回來，就可以再 merge。也可以單純看看，暫時不想要自己的程式碼被干擾。因此，用 `git fetch` + `git merge` 兩段分開會讓你有比較高的掌控力
+如果看了以後想要把 master 進度先拉回來，就可以再 merge。也可以單純看看，暫時不想要自己的程式碼被干擾。因此，用  `git fetch` + `git merge`  兩段分開會讓你有比較高的掌控力
 
 當然也會有一些求快速的情況想直接用 pull，或許今天大家約出來實體衝進度，在討論中你已經蠻清楚有什麼更動了，這時候就直接用 pull 一口氣拉回來
 
@@ -56,6 +59,7 @@ Fork 這個字在這邊翻譯成「複製」並不是這個字的原意，Fork �
 ### - pull requesrt (PR)
 
 在 GitHub 上有個有趣的機制：
+
 1. 先複製（Fork）一份原作的專案到你自己的 GitHub 帳號底下
 2. 因為這個複製回來的專案已經在你自己的 GitHub 帳號下，所以你就有完整的權限，想怎麼改就怎麼改
 3. 改完後，先推回（Push）你自己帳號的專案
@@ -67,7 +71,8 @@ Fork 這個字在這邊翻譯成「複製」並不是這個字的原意，Fork �
 也就是說，我不需要原作者開權限給我，讓我去對他的專案修改。而是我透過 fork 的方式，將其專案複製一分到我的倉庫，並且進行修改，改完之後發 PR 讓原作者知道，並決定是否要採用
 
 參考：
+
 1. [與其它開發者的互動 - 使用 Pull Request（PR）](https://gitbook.tw/chapters/github/pull-request)
 2. [git 基礎](git%20基礎.md)
 3. [git 遠端儲存庫](git%20遠端儲存庫.md)
-4. [](git%20reset%20與%20git%20rebase.md#-%20合併特定%20Commit%20的案例|使用%20rebase%20需要注意什麼)
+4. [git reset 與 git rebase](git%20reset%20與%20git%20rebase.md#-%20合併特定%20Commit%20的案例|使用%20rebase%20需要注意什麼)

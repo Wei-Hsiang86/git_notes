@@ -11,10 +11,12 @@
 在 Git 的工作流程中，`git add`、`git commit` 和 `git push` 這三個指令處理的檔案狀態可以這樣形容：
 
 1. **git add** - **"staged"** (暫存)
+
    - 這個指令將檔案從工作目錄（working directory）加入到暫存區（staging area）
    - 檔案狀態從 "untracked" 或 "modified" 變成 "staged"
 
 2. **git commit** - **"committed"** (已提交)
+
    - 這個指令將暫存區的檔案提交到本地儲存庫（local repository）
    - 檔案狀態從 "staged" 變成 "committed"
    - git commit 沒有 -m 時進入編輯器模式
@@ -25,11 +27,13 @@
 
 這三個狀態代表了 Git 工作流程中檔案的不同階段，從本地的變更到最終發布到遠端儲存庫
 
-![WFg26IS.png](WFg26IS.png)
+![WFg26IS.png](pictures/WFg26IS.png)
 
 額外提到， Git 的內部儲存機制中：
+
 - **每個 commit 都記錄著它的父 commit**
 - **但父 commit 不知道誰是它的子 commit**
+
 ### - git 指令結構
 
 ```bash
@@ -59,22 +63,26 @@ git config user.email   # 查看目前的 email
 ```
 
 如果想看完整的 git 設定，可以用：
+
 ```bash
 git config --list
 ```
 
 git 的設定分成三個層級：
+
 - 系統層級（system）
 - 全域層級（global）
 - 專案層級（local）
 
 所以更精確的查看方式是：
+
 ```bash
 git config --global user.name    # 查看全域設定的名字
 git config --local user.name     # 查看當前專案設定的名字
 ```
 
 如果需要修改名字，可以用：
+
 ```bash
 git config --global user.name "新的名字"    # 修改全域設定
 git config --local user.name "新的名字"     # 修改當前專案設定
@@ -87,6 +95,7 @@ git config --global core.quotepath false
 ```
 
 參考：
+
 1. [git log](git%20log.md)
 2. [git stash](git%20stash.md)
 3. [git 分支](git%20分支.md)
