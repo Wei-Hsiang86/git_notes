@@ -19,17 +19,26 @@
    - 檔案狀態從 "staged" 變成 "committed"
    - git commit 沒有 -m 時進入編輯器模式
 
+```hash
+# 時間流
+... → 7c7ab31 → 83bd9a0 → ad8d3f7 → 15f9306 (HEAD)
+      HEAD~3     HEAD~2    HEAD~1      HEAD~0
+```
+
+`HEAD~1` 跟 `HEAD^` 同義，`HEAD~2` 跟 `HEAD^^` 同義，`^` 表示當前 commit 的父節點，不過數字的方式更為直觀。這裡有個小觀念可以注意，在 Git 的內部儲存機制中：
+- **每個 commit 都記錄著它的父 commit**
+- **但父 commit 不知道誰是它的子 commit**
+
 3. **git push** - **"pushed"** 或 **"published"** (已推送/已發布)
    - 這個指令將本地儲存庫的提交推送到遠端儲存庫（remote repository）
    - 檔案狀態從本地的 "committed" 變成遠端的 "pushed" 或 "published"
 
-這三個狀態代表了 Git 工作流程中檔案的不同階段，從本地的變更到最終發布到遠端儲存庫
+這三個狀態代表了 Git 工作流程中檔案的不同階段，從本地的變更到最終發布到遠端儲存庫。此外可以透過 `git status` 知道目前 branch 的狀態
+
+參考：[git status](git%20status.md)
 
 ![WFg26IS](pictures/WFg26IS.png)
 
-額外提到， Git 的內部儲存機制中：
-- **每個 commit 都記錄著它的父 commit**
-- **但父 commit 不知道誰是它的子 commit**
 ### - git 指令結構
 
 ```bash
@@ -89,7 +98,7 @@ git config --global core.quotepath false
 參考：
 1. [git log](git%20log.md)
 2. [git stash](git%20stash.md)
-3. [git 分支](git%20分支.md)
+3. [git branch](git%20branch.md)
 4. [git subtree](git%20subtree.md)
 5. [git ignore](git%20ignore.md)
 6. [Git Commit Message 這樣寫會更好，替專案引入規範與範例](https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html)

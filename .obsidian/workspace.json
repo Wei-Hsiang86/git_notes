@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d4dd31baa8666843",
+        "id": "2791e9b43094c20f",
         "type": "tabs",
         "children": [
           {
-            "id": "1c5fa0d8c40ea4c4",
+            "id": "6d79fbd652fa72b0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "git 分支.md",
+                "file": "git 協作.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "git 分支"
+              "title": "git 協作"
             }
           }
         ]
@@ -166,21 +166,32 @@
       "bases:建立新的 base": false
     }
   },
-  "active": "1c5fa0d8c40ea4c4",
+  "active": "6d79fbd652fa72b0",
   "lastOpenFiles": [
-    "git 清除機制.md",
-    "git 分支.md",
-    "關於 detached HEAD (斷頭) 狀態.md",
-    "學習路徑.md",
-    "git reset 與 git rebase.md",
-    "git 基礎.md",
-    "git stash.md",
-    "git reflog.md",
-    "git rebase 遇到問題.md",
     "git log.md",
+    "git 清除機制.md",
+    "reference (git refs).md",
+    "gitlab 自動化部署 - Pipeline.md",
+    "git subtree.md",
+    "git submodule.md",
+    "git status.md",
+    "git stash.md",
+    "git reset 與 git rebase.md",
+    "git reflog 與 ORIG_HEAD.md",
+    "git rebase 遇到問題.md",
     "git ignore.md",
     "git cherry pick.md",
-    "git 遠端儲存庫.md",
-    "git 協作.md"
+    "git branch.md",
+    "git 遠端儲存庫 ＆ git push.md",
+    "git 基礎.md",
+    "git 協作.md",
+    "關於 detached HEAD (斷頭) 狀態.md",
+    "學習路徑.md",
+    "不同環境開發：Git Merge 方法比較.md",
+    "不同環境開發：遠端連線設定.md",
+    "不同環境開發：單人開發 vs 多人開發工作流程.md",
+    "git 分支.md",
+    "git reflog.md",
+    "git 遠端儲存庫.md"
   ]
 }

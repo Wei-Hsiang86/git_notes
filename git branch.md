@@ -17,7 +17,7 @@ HEAD 是指「現在目前分支的最新 commit 端點」，但可能不會是�
 參考：[git 清除機制](git%20清除機制.md)
 ### - git branch 命令
 
-`git branch` 主要用於建立、列出和刪除分支。另外要記得，因為 working-directory 跟 staging-area 都被 git 歸類為全域變數，所以說切換分之前最好要確保已經 commit，不然遇到同檔案的衝突就無法切換成功
+`git branch` 主要用於建立、列出和刪除分支。另外要記得，因為 working-directory 跟 staging-area 都被 git 歸類為全域變數，所以說切換分支前最好要確保已經 commit，不然遇到同檔案的衝突就無法切換成功
 #### 1. 列出分支
 
 ```bash
@@ -32,6 +32,7 @@ git branch -a
 
 # 顯示更多詳細資訊
 git branch -v
+git branch -vv (更詳細，會包含上游分支，還有遠端本地的進度差異)
 ```
 #### 2. 建立分支
 

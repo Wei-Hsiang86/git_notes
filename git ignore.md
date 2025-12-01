@@ -4,14 +4,14 @@
 
 1. 先把檔案從 git 追蹤清單中移除，但保留檔案：
 ```bash
-git rm --cached filename    # 移除單一檔案
+git rm --cached filename      # 移除單一檔案
 git rm --cached -r folder/    # 移除整個資料夾
 ```
 
 2. 在 .gitignore 檔案中加入要忽略的檔案或資料夾：
 ```bash
 echo "filename" >> .gitignore    # 加入單一檔案
-echo "folder/" >> .gitignore    # 加入整個資料夾
+echo "folder/" >> .gitignore     # 加入整個資料夾
 ```
 
 3. commit 這些更改：
@@ -91,14 +91,18 @@ data[1-9]/
 **/.cache/
 ```
 
-在使用萬用字元時，要確保模式足夠具體，避免不小心忽略了不應該忽略的檔案或資料夾。如果你想忽略特定資料夾但保留其中的某些檔案，你可以使用 `!` 前綴來否定某個模式：
+在使用萬用字元時，要確保模式**足夠具體**，避免不小心忽略了不應該忽略的檔案或資料夾。如果你想忽略特定資料夾但保留其中的某些檔案，你可以使用 `!` 前綴來否定某個模式：
 
+- `folder/*` = 忽略資料夾內的**檔案**，但**不忽略資料夾本身**
+- `folder/` = 忽略整個資料夾
+
+所以排除應該要這麼寫：
 ```
 # 忽略所有 logs 資料夾
-logs/
+logs/*
 
 # 但保留重要的日誌檔案
-!logs/important.log
+!logs/*important.log
 ```
 ### - 問題
 

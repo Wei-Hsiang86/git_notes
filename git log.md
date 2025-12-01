@@ -1,5 +1,6 @@
 Git log 可以加上許多實用的參數來自定義輸出格式和過濾結果。以下是一些常用的 git log 參數：
-### - 基本格式參數
+### - 相關參數
+#### 基本格式參數
 
 1. `--oneline` - 每個提交只顯示一行（簡化的 commit ID 和提交訊息）
 2. `--pretty=format:"..."` - 自定義輸出格式
@@ -7,7 +8,7 @@ Git log 可以加上許多實用的參數來自定義輸出格式和過濾結果
 4. `--decorate` - 顯示分支和標籤名稱
 5. `--abbrev-commit` - 顯示縮短的 commit ID
 6. `--all` - 顯示所有分支的 log
-### - 過濾和範圍參數
+#### 過濾和範圍參數
 
 1. `-n <number>` 或 `--max-count=<number>` - 限制顯示的提交數量
 2. `--since`, `--after` - 顯示特定日期之後的提交
@@ -19,10 +20,10 @@ Git log 可以加上許多實用的參數來自定義輸出格式和過濾結果
 8. `--stat` - 顯示每個提交中更改的檔案統計
 9. `--name-only` - 只顯示更改的檔案名稱
 10. `--name-status` - 顯示更改的檔案名稱及其狀態
-### - 路徑過濾
+#### 路徑過濾
 
 `-- <path>` - 僅顯示指定路徑中的變更歷史
-### - 常用組合範例
+#### 常用組合範例
 
 ```bash
 # 漂亮的圖形化顯示
@@ -39,6 +40,14 @@ git log --since=2.weeks
 
 # 查看特定檔案的歷史記錄
 git log -- filename.js
+```
+
+```bash
+# 指令查看分支圖 (with 好看的排版配色)
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+
+# 指定特定幾條 branch 查看 log
+git log --graph --oneline main origin/main
 ```
 
 如果需要查看特定參數的更詳細描述，可以使用 `git log --help` 或參考 Git 官方文檔
@@ -92,6 +101,32 @@ git log --graph --oneline --decorate branch1 branch2
 ```
 
 這些指令在比較特性分支（feature branch）和主分支（main/master）時特別有用，可以幫助你了解哪些變更尚未合併
+#### 比較 commit 或是 branch 差異
+
+透過 log 指令或是 `git diff`
+
+```bash
+# 查看哪些檔案有差異
+git diff --name-only <branch-name>
+
+# 查看哪些檔案有差異，並顯示狀態（新增、修改、刪除）
+git diff --name-status <branch-name>
+```
+
+可以使用圖形化的套件 or 工具：[Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)、[Git Tree Compare](https://marketplace.visualstudio.com/items?itemName=letmaik.git-tree-compare)。graph 可以直接圖形化 git 路徑；tree compare 則是可以選擇不同的 branch 當作比較的 base，然後看要用 merge diff 顯示合併會遇到的衝突，或是 all diff 看看全部有差異的檔案
+
+![螢幕擷取畫面 2025-10-08 115441.png](螢幕擷取畫面%202025-10-08%20115441.png)
+### - 設定方便的 alias
+
+```bash
+# 設定簡短好記的別名
+git config --global alias.lg "log --graph --oneline --decorate --all"
+git config --global alias.lga "log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'"
+
+# 之後只要打
+git lg
+git lga
+```
 
 參考：
 1. [git 協作](git%20協作.md)
