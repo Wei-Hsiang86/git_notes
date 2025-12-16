@@ -42,8 +42,8 @@ git reset --hard origin/main
 ```
 
 參考：
-1. [[git 基礎]]
-2. [[git 協作]]
+1. [git 基礎](git%20基礎.md)
+2. [git 協作](git%20協作.md)
 
 ### - 遇到的狀況
 

@@ -115,7 +115,7 @@ git diff --name-status <branch-name>
 
 可以使用圖形化的套件 or 工具：[Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)、[Git Tree Compare](https://marketplace.visualstudio.com/items?itemName=letmaik.git-tree-compare)。graph 可以直接圖形化 git 路徑；tree compare 則是可以選擇不同的 branch 當作比較的 base，然後看要用 merge diff 顯示合併會遇到的衝突，或是 all diff 看看全部有差異的檔案
 
-![[螢幕擷取畫面 2025-10-08 115441.png]]
+![螢幕擷取畫面 2025-10-08 115441.png](螢幕擷取畫面%202025-10-08%20115441.png)
 ### - 設定方便的 alias
 
 ```bash
@@ -129,5 +129,5 @@ git lga
 ```
 
 參考：
-1. [[git 協作]]
-2. [[git reset 與 git rebase]]
+1. [git 協作](git%20協作.md)
+2. [git reset 與 git rebase](git%20reset%20與%20git%20rebase.md)

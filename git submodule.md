@@ -59,7 +59,7 @@ git submodule add https://github.com/user/library.git
 | 管理複雜度 | 較複雜       | 較簡單        |
 | 適用場景  | 元件化開發     | 系統化開發      |
 
-參考：[[git subtree]]
+參考：[git subtree](git%20subtree.md)
 
 ### - 基本操作
 

@@ -107,7 +107,7 @@ $ git remote add origin https://github.com/ellenlee/git-demo-remote.git
 
 可以透過 `git remote add` 指令，在同一個專案上設定多個遠端主機：
 
-![[Pasted image 20231005171710.png]]
+![Pasted image 20231005171710.png](Pasted%20image%2020231005171710.png)
 
 `git branch -vv` 可以透過這個指令查看目前的分支有哪些，並透過 `git branch <分支名稱>` 來新增分支，透過 `git checkout` 來選取分支
 ```bash
@@ -119,7 +119,7 @@ PS C:\Users\Frank\Desktop\CS_courses\AC\dev_backend\forum-express-grading-github
 * main 3e54325 [origin/main] chore:  use pull_request_target event and checkout pull_request.head
 ```
 
-參考：[[git branch]]
+參考：[git branch](git%20branch.md)
 
 #### git remote remove：刪除遠端儲存庫
 
@@ -300,5 +300,5 @@ git fetch --prune
 參考：
 1. [Git 基礎 - 檢視提交的歷史記錄](https://git-scm.com/book/zh-tw/v2/Git-%E5%9F%BA%E7%A4%8E-%E6%AA%A2%E8%A6%96%E6%8F%90%E4%BA%A4%E7%9A%84%E6%AD%B7%E5%8F%B2%E8%A8%98%E9%8C%84)
 2. [Git 概念、常用語法及 GitHub 使用介紹](https://hackmd.io/@Yu040419/SyHrpos6V)
-3. [[git 協作]]
-4. [[git branch]]
+3. [git 協作](git%20協作.md)
+4. [git branch](git%20branch.md)

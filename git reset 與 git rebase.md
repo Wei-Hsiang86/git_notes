@@ -51,8 +51,8 @@ Git 有三個重要區域：
 - `--soft` 和 `--mixed` 都會保留檔案變更
 
 參考：
-1. [[git 基礎]]
-2. [[關於 detached HEAD (斷頭) 狀態]]
+1. [git 基礎](git%20基礎.md)
+2. [關於 detached HEAD (斷頭) 狀態](關於%20detached%20HEAD%20(斷頭)%20狀態.md)
 
 ### - Git Rebase
 
@@ -111,8 +111,8 @@ git rebase -i <起點>
 總結來說，為了安全起見，執行 rebase 前最好確保工作目錄是乾淨的，或者將變更暫時保存起來
 
 參考：
-1. [[git rebase 遇到問題]]
-2. [[git 基礎]]
+1. [git rebase 遇到問題](git%20rebase%20遇到問題.md)
+2. [git 基礎](git%20基礎.md)
 #### ▸ git rebase -i 互動操作的動作
 
 互動式 rebase 中，時間順序是由遠到近的 (log 是最近的當第一，後續越來越久遠)，其中每個指令動作的意義：

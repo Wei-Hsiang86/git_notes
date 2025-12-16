@@ -35,9 +35,9 @@
 
 這三個狀態代表了 Git 工作流程中檔案的不同階段，從本地的變更到最終發布到遠端儲存庫。此外可以透過 `git status` 知道目前 branch 的狀態
 
-參考：[[git status]]
+參考：[git status](git%20status.md)
 
-![[WFg26IS.png]]
+![WFg26IS](pictures/WFg26IS.png)
 
 ### - git 指令結構
 
@@ -96,10 +96,10 @@ git config --global core.quotepath false
 ```
 
 參考：
-1. [[git log]]
-2. [[git stash]]
-3. [[git branch]]
-4. [[git subtree]]
-5. [[git ignore]]
+1. [git log](git%20log.md)
+2. [git stash](git%20stash.md)
+3. [git branch](git%20branch.md)
+4. [git subtree](git%20subtree.md)
+5. [git ignore](git%20ignore.md)
 6. [Git Commit Message 這樣寫會更好，替專案引入規範與範例](https://wadehuanglearning.blogspot.com/2019/05/commit-commit-commit-why-what-commit.html)
 7. [如何解決在命令提示字元下使用 Git for Windows 顯示中文亂碼的問題](https://blog.miniasp.com/post/2017/09/17/Git-for-Windows-Command-Prompt-Display-Chinese-Issues)
