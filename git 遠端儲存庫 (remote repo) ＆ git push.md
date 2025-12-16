@@ -1,6 +1,6 @@
 ### - git remote
 
-要查看遠端 repository 的設定有幾種方式：
+一般來說，`origin` 是 clone 時自動設定的預設遠端 repo 名稱，但這個名稱其實可以依照需求更改，例如有些團隊會用 `prod`、`staging` 來區分不同環境的 repo。要查看遠端 repository 的設定有幾種方式：
 
 1. 最基本的指令，列出所有遠端 repo：
 ```bash
@@ -33,6 +33,11 @@ git remote rename <舊名稱> <新名稱>    # 重新命名
 git remote remove <名稱>               # 移除遠端 repo
 ```
 
+查看遠端儲存庫的相關資訊：
+```bash
+git remote show origin
+```
+
 實際例子：
 ```bash
 # 新增一個叫做 upstream 的遠端 repo
@@ -40,9 +45,33 @@ git remote add upstream https://github.com/original/repo.git
 
 # 把 origin 改名成 production
 git remote rename origin production
-```
 
-一般來說，`origin` 是 clone 時自動設定的預設遠端 repo 名稱，但這個名稱其實可以依照需求更改，例如有些團隊會用 `prod`、`staging` 來區分不同環境的 repo
+# 查看 origin_github 這個遠端 repo 的資訊
+(.venv) PS C:\Users\Frank\Desktop\FHIR\servers\fhir_converter\fhir> git remote show origin_github
+* remote origin_github
+  Fetch URL: https://github.com/Wei-Hsiang86/fhir_converter.git
+  Push  URL: https://github.com/Wei-Hsiang86/fhir_converter.git
+  HEAD branch: main
+  Remote branches:
+    dev                      tracked
+    feature/FHIR結構調整 tracked
+    feature/duplicate_id     tracked
+    feature/explorer         tracked
+    feature/new_xlsx         tracked
+    feature/output_change    tracked
+    feature/remove_blank     tracked
+    main                     tracked
+    scmh                     tracked
+  Local branches configured for 'git pull':
+    feature/explorer merges with remote feature/explorer
+    scmh             merges with remote scmh
+  Local refs configured for 'git push':
+    dev                      pushes to dev                      (up to date)
+    feature/FHIR結構調整 pushes to feature/FHIR結構調整 (up to date)
+    feature/explorer         pushes to feature/explorer         (up to date)
+    main                     pushes to main                     (up to date)
+    scmh                     pushes to scmh                     (up to date)
+```
 
 #### git remote -v：查看遠端
 
@@ -78,7 +107,7 @@ $ git remote add origin https://github.com/ellenlee/git-demo-remote.git
 
 可以透過 `git remote add` 指令，在同一個專案上設定多個遠端主機：
 
-![Pasted image 20231005171710.png](Pasted%20image%2020231005171710.png)
+![[Pasted image 20231005171710.png]]
 
 `git branch -vv` 可以透過這個指令查看目前的分支有哪些，並透過 `git branch <分支名稱>` 來新增分支，透過 `git checkout` 來選取分支
 ```bash
@@ -90,7 +119,7 @@ PS C:\Users\Frank\Desktop\CS_courses\AC\dev_backend\forum-express-grading-github
 * main 3e54325 [origin/main] chore:  use pull_request_target event and checkout pull_request.head
 ```
 
-參考：[git branch](git%20branch.md)
+參考：[[git branch]]
 
 #### git remote remove：刪除遠端儲存庫
 
@@ -183,6 +212,8 @@ git switch feature/分支名稱
 ```
 ### - git push：推送分支
 
+#### 用法
+
 設定好遠端儲存庫後，我們就可以將本地的程式碼「推」上遠端儲存庫，也就是使用 `git push` 指令來將本地專案的最新狀態推上遠端
 
 在使用 `git push` 指令時，需要提供兩個資訊：
@@ -200,34 +231,74 @@ $ git push -u origin main
 
 - `u` 是 `-set-upstream` 的縮寫，意即「設定上游」。這個參數會讓本地的 `main` 和遠端 `origin` 儲存庫裡的 `main` 從此有一個上下游的關係，以後只要輸入 `git push`，就會自動把本地的 main 推送到遠端的 origin
 
-#### 設定上游
+#### 刪除遠端分支
 
-- 設定 upstream (上游) 的指令：
+##### 方法一：使用 push --delete（推薦）
+
 ```bash
-# 方法 1: 使用 --set-upstream-to（推薦，語意清楚）
-git branch --set-upstream-to=origin_github/dev dev
-
-# 方法 2: 簡寫版本
-git branch -u origin_github/dev dev
-
-# 如果是設定當前分支，可以省略分支名稱
-git branch -u origin_github/dev
+git push origin --delete branch-name
 ```
 
-因為我們使用 HTTPS 連線，第一次執行指令後可能會需要輸入個人身份驗證資訊，這時候就請你在 password 的地方貼上 personal access token 
+例如刪除遠端的 `feature/old-feature` 分支：
 
-訊息的最下方兩行表示，已經在你指定的遠端位址上建立了一個新的分支 (也叫 `main`)，並且在本地分支 `main` 上的儲存內容，已經推送至遠端的 `main` 裡
+```bash
+git push origin --delete feature/old-feature
+```
 
-在圖形操作軟體的歷史記錄中，通常會用不同的：
-- **顏色標記**（如遠端分支用紅色，本地分支用綠色）
-- **圖示符號**（如不同的小圖標）
-- **文字標識**（如 `origin/main` vs `main`）
-- **視覺樣式**（如實線 vs 虛線）
+##### 方法二：使用冒號語法（舊語法）
 
-來幫助使用者區分哪些是遠端分支（remote branches），哪些是本地分支（local branches）。這裡的「標籤」是指這些**視覺區分標記**，而不是 Git 技術概念中的 tag（標籤）或 branch name（分支名稱）本身。它是 GUI 工具為了提升使用者體驗而設計的視覺提示元素
+```bash
+git push origin :branch-name
+```
+
+這個語法的邏輯是「把空的內容推到遠端分支」，效果等同於刪除
+
+```bash
+git push origin :feature/old-feature
+```
+
+
+**如果也想把本地的分支一起刪掉：**
+
+```bash
+# 刪除本地分支（需要先切換到其他分支）
+git branch -d branch-name
+
+# 如果分支還沒合併，強制刪除
+git branch -D branch-name
+```
+
+##### 完整範例
+
+假設你要刪除 `feature/login` 分支：
+
+```bash
+# 1. 切換到其他分支（例如 main）
+git checkout main
+
+# 2. 刪除遠端分支
+git push origin --delete feature/login
+
+# 3. 刪除本地分支
+git branch -d feature/login
+
+# 4. 確認刪除成功
+git branch -a
+```
+
+- 刪除遠端分支需要有相應的權限
+- 通常主分支（main/master）會被保護，無法直接刪除
+- 刪除後其他協作者需要執行 `git fetch --prune` 來同步刪除資訊
+
+```bash
+# 清理本地已經不存在的遠端分支參照
+git fetch --prune
+```
+
+這樣就可以刪除遠端分支了！
 
 參考：
 1. [Git 基礎 - 檢視提交的歷史記錄](https://git-scm.com/book/zh-tw/v2/Git-%E5%9F%BA%E7%A4%8E-%E6%AA%A2%E8%A6%96%E6%8F%90%E4%BA%A4%E7%9A%84%E6%AD%B7%E5%8F%B2%E8%A8%98%E9%8C%84)
 2. [Git 概念、常用語法及 GitHub 使用介紹](https://hackmd.io/@Yu040419/SyHrpos6V)
-3. [git 協作](git%20協作.md)
-4. [git branch](git%20branch.md)
+3. [[git 協作]]
+4. [[git branch]]

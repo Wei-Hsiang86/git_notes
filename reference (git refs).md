@@ -84,4 +84,4 @@ git checkout new-feature
 - 分支、tag、HEAD、ORIG_HEAD 都是 reference
 - 它們的差異在於**如何管理**和**用途**，但本質都是指標
 
-參考：[git reflog 與 ORIG_HEAD](git%20reflog%20與%20ORIG_HEAD.md)
+參考：[[git reflog 與 ORIG_HEAD]]

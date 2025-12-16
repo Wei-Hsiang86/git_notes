@@ -24,6 +24,8 @@ squash 66bcc45 feat:add new docker notes about dockerfile
 
 這裡的 `^` 表示 66bcc45 的父 commit 也就是 ff00e7a，然後起點不算，所以就是從 66bcc45 編輯到終點 HEAD (通常就是目前分支最新的進度)
 
+#### 強制推送的盲區
+
 另外有一個重點，因為 rebase 過後 HASH 值會變，所以說要 push 回去遠端 repo 的時候要小心，當然可以使用 `--force` 直接強推。但如果強制 push 前，團隊其他成員有 push 了，那就是滿嚴重的問題了
 
 建議使用下面這個方法：
@@ -40,8 +42,8 @@ git reset --hard origin/main
 ```
 
 參考：
-1. [git 基礎](git%20基礎.md)
-2. [git 協作](git%20協作.md)
+1. [[git 基礎]]
+2. [[git 協作]]
 
 ### - 遇到的狀況
 
