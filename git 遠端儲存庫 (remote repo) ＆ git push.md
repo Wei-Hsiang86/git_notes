@@ -107,7 +107,7 @@ $ git remote add origin https://github.com/ellenlee/git-demo-remote.git
 
 可以透過 `git remote add` 指令，在同一個專案上設定多個遠端主機：
 
-![Pasted image 20231005171710.png](Pasted%20image%2020231005171710.png)
+![[Pasted image 20231005171710.png]]
 
 `git branch -vv` 可以透過這個指令查看目前的分支有哪些，並透過 `git branch <分支名稱>` 來新增分支，透過 `git checkout` 來選取分支
 ```bash
@@ -119,7 +119,7 @@ PS C:\Users\Frank\Desktop\CS_courses\AC\dev_backend\forum-express-grading-github
 * main 3e54325 [origin/main] chore:  use pull_request_target event and checkout pull_request.head
 ```
 
-參考：[git branch](git%20branch.md)
+參考：[[git branch ＆ git checkout]]
 
 #### git remote remove：刪除遠端儲存庫
 
@@ -143,6 +143,12 @@ git remote set-url <遠端 repo name> <新的URL>
 通常遠端儲存庫的名稱預設是 `origin`，如果遠端儲存庫使用其他名稱，記得替換成相應的名稱。例如，如果要將遠端儲存庫從 GitHub 更改為 GitLab：
 ```bash
 git remote set-url origin https://gitlab.com/使用者名稱/專案名稱.git
+```
+
+一樣可以透過 `--fetch` 或是 `--push` 來分別更新 fetch 跟 push 的遠端儲存庫 url，但記得分別更新後，再使用 `git remote set-url <遠端 repo name> <新的URL>` 就只會更新 fetch 的部分了
+```bash
+git remote set-url --fetch <遠端 repo name> <新的URL>
+git remote set-url --push <遠端 repo name> <新的URL>
 ```
 
 ##### 2. 分別設定 fetch 跟 push
@@ -300,5 +306,5 @@ git fetch --prune
 參考：
 1. [Git 基礎 - 檢視提交的歷史記錄](https://git-scm.com/book/zh-tw/v2/Git-%E5%9F%BA%E7%A4%8E-%E6%AA%A2%E8%A6%96%E6%8F%90%E4%BA%A4%E7%9A%84%E6%AD%B7%E5%8F%B2%E8%A8%98%E9%8C%84)
 2. [Git 概念、常用語法及 GitHub 使用介紹](https://hackmd.io/@Yu040419/SyHrpos6V)
-3. [git 協作](git%20協作.md)
-4. [git branch](git%20branch.md)
+3. [[git 協作]]
+4. [[git branch ＆ git checkout]]

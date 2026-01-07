@@ -1,4 +1,5 @@
-`git reflog` 的主要用途是記錄你在本地儲存庫中的所有操作歷史，包括那些可能不會出現在正常 `git log` 中的操作。它是一個非常強大的救援工具，特別適合以下情況
+`git reflog` 的主要用途是記錄你在本地儲存庫中 **HEAD** 的所有操作歷史，包括那些可能不會出現在正常 `git log` 中的操作。它是一個非常強大的救援工具，特別適合以下情況
+
 ### - `git reflog` 的主要用途
 
 1. **恢復已刪除的分支或提交**
@@ -82,4 +83,4 @@ git reset --hard ORIG_HEAD
 
 簡單來說，`ORIG_HEAD` 就是 Git 給你的一個「上一步」按鈕，專門用於那些會大改歷史的操作
 
-參考：[reference (git refs)](reference%20(git%20refs).md)
+參考：[[reference (git refs)]]

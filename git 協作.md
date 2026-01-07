@@ -8,7 +8,13 @@
 1. 撰寫格式要一致
 2. 換行字元 (end of line / eol) 也要統一
 
-> ==`git pull` = `git fetch` + `git merge`==
+> `git pull` = `git fetch` + `git merge`
+
+```bash
+git pull <遠端名稱> <分支名稱>
+```
+
+要小心別跟 reset 的寫法搞混，pull 是「動作 + 來源 + 目標」的概念，reset 是直接指定一個「參考點（ref）」，所以用斜線表示遠端分支。參考：[[git reset 與 git rebase]]
 
 ### - git tag
 
@@ -78,9 +84,9 @@ git push -u origin main
 
 讓本地端知道遠端有更新，此時可以用 `git fetch origin`，叫 Git 去檢查 `origin` 主機裡有沒有任何更新。本地端抓取了最新的遠端資訊後，就會更新線圖，把最新資訊反應出來：
 
-![Pasted image 20240426170132.png](Pasted%20image%2020240426170132.png)
+![[Pasted image 20240426170132.png]]
 
-![Pasted image 20240426170029.png](Pasted%20image%2020240426170029.png)
+![[Pasted image 20240426170029.png]]
 
 ==如果 github 端 (遠端) 有做任何的更新，或是更改 origin 的 url (即便網址一樣)，都一定要先 fetch，這樣本地端才會抓到新的資訊。如果沒有 fetch 不管怎麼 merge 都不會合併==
 ### - git merge
@@ -91,9 +97,9 @@ git push -u origin main
 fatal: No remote for the current branch.
 ```
 
-![Pasted image 20240426170143.png](Pasted%20image%2020240426170143.png)
+![[Pasted image 20240426170143.png]]
 
-![Pasted image 20240426170149.png](Pasted%20image%2020240426170149.png)
+![[Pasted image 20240426170149.png]]
 
 > 那到底平常要用比較快的 `git pull`，還是要用兩段式的 `git fetch` + `git merge` 呢？
 
@@ -105,7 +111,7 @@ fatal: No remote for the current branch.
 
 當然也會有一些求快速的情況想直接用 pull，或許今天大家約出來實體衝進度，在討論中你已經蠻清楚有什麼更動了，這時候就直接用 pull 一口氣拉回來
 
-參考：[git stash](git%20stash.md)
+參考：[[git stash]]
 
 ### - fork
 
@@ -128,6 +134,6 @@ Fork 這個字在這邊翻譯成「複製」並不是這個字的原意，Fork �
 
 參考：
 1. [與其它開發者的互動 - 使用 Pull Request（PR）](https://gitbook.tw/chapters/github/pull-request)
-2. [git 基礎](git%20基礎.md)
-3. [git 遠端儲存庫 (remote repo) ＆ git push](git%20遠端儲存庫%20(remote%20repo)%20＆%20git%20push.md)
-4. [](git%20reset%20與%20git%20rebase.md#-%20合併特定%20Commit%20的案例|使用%20rebase%20需要注意什麼)
+2. [[git 基礎]]
+3. [[git 遠端儲存庫 (remote repo) ＆ git push]]
+4. [[git reset 與 git rebase#- 合併特定 Commit 的案例|使用 rebase 需要注意什麼]]

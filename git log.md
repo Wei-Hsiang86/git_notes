@@ -73,6 +73,16 @@ git log --left-right branch1...branch2
 ```
 會在每個 commit 前面加上 < 或 > 箭頭標示來源分支
 
+```bash
+(.venv) PS C:\Users\Frank\Desktop\FHIR\servers\fhir_explorer> git log --oneline --graph --left-right HEAD...origin_github/feature/converter
+< 7625776 (HEAD -> feature/converter) feat: 更新回傳 IG 版本的內容
+< 92e1da9 feat: 回傳 IG 版本加上 url
+< 7fbfb0b (origin/develop, develop) feat: 新增IG版本查詢畫面
+< 97ef1ba Merge branch 'feature/converter' into 'develop'
+> b075487 (origin_github/feature/converter, origin/feature/converter) feat: 更新回傳 IG 版本的內容
+> 9c0054c feat: 回傳 IG 版本加上 url
+```
+
 4. 如果只想看摘要，可以加上 `--oneline`：
 ```bash
 git log --oneline --left-right branch1...branch2
@@ -115,7 +125,7 @@ git diff --name-status <branch-name>
 
 可以使用圖形化的套件 or 工具：[Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)、[Git Tree Compare](https://marketplace.visualstudio.com/items?itemName=letmaik.git-tree-compare)。graph 可以直接圖形化 git 路徑；tree compare 則是可以選擇不同的 branch 當作比較的 base，然後看要用 merge diff 顯示合併會遇到的衝突，或是 all diff 看看全部有差異的檔案
 
-![螢幕擷取畫面 2025-10-08 115441.png](螢幕擷取畫面%202025-10-08%20115441.png)
+![[螢幕擷取畫面 2025-10-08 115441.png]]
 ### - 設定方便的 alias
 
 ```bash
@@ -129,5 +139,5 @@ git lga
 ```
 
 參考：
-1. [git 協作](git%20協作.md)
-2. [git reset 與 git rebase](git%20reset%20與%20git%20rebase.md)
+1. [[git 協作]]
+2. [[git reset 與 git rebase]]

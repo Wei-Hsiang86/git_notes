@@ -1,7 +1,7 @@
 HEAD 是指「現在目前分支的最新 commit 端點」，但可能不會是實際上最新的，因為遠端已經更新或是其他原因等等。git branch 的本質：
 
 當你執行 `git branch new-branch-name` 時：
-1. **Git 會創建一個新的分支指標**，指向當前 HEAD 所在的 commit
+1. **Git 會創建一個新的分支指標**，指向 ==當前 HEAD== 所在的 commit
 2. **不是真的「複製」**，而是創建一個新的**參考點**（reference）
 3. **賦予名字**：`new-branch-name` 就是這個新分支的名稱
 
@@ -14,10 +14,10 @@ HEAD 是指「現在目前分支的最新 commit 端點」，但可能不會是�
 
 `git branch` 和 `git checkout` 是 Git 工作流程中管理分支的重要命令，了解這些命令對於有效管理 Git 專案中的分支和工作流程非常重要，下面是說明還有常用的指令
 
-參考：[git 清除機制](git%20清除機制.md)
+參考：[[git 清除機制]]
 ### - git branch 命令
 
-`git branch` 主要用於建立、列出和刪除分支。另外要記得，因為 working-directory 跟 staging-area 都被 git 歸類為全域變數，所以說切換分支前最好要確保已經 commit，不然遇到同檔案的衝突就無法切換成功
+`git branch` 主要用於建立、列出和刪除分支。另外要記得，因為 working-directory 跟 staging-area 都被 git 歸類為全域變數，所以說切換分支前最好要確保已經 commit，不然遇到同檔案的衝突就無法建立成功
 #### 1. 列出分支
 
 ```bash
@@ -71,7 +71,7 @@ git branch --set-upstream-to=origin_github/dev dev
 # 方法 2: 簡寫版本
 git branch -u origin_github/dev dev
 
-# 如果是設定當前分支，可以省略分支名稱
+# 如果是設定當前分支，可以省略本地分支名稱
 git branch -u origin_github/dev
 ```
 
@@ -85,10 +85,11 @@ git branch -u origin_github/dev
 
 來幫助使用者區分哪些是遠端分支（remote branches），哪些是本地分支（local branches）。這裡的「標籤」是指這些**視覺區分標記**，而不是 Git 技術概念中的 tag（標籤）或 branch name（分支名稱）本身。它是 GUI 工具為了提升使用者體驗而設計的視覺提示元素
 
-參考：[git 遠端儲存庫 (remote repo) ＆ git push](git%20遠端儲存庫%20(remote%20repo)%20＆%20git%20push.md)
+參考：[[git 遠端儲存庫 (remote repo) ＆ git push]]
 ### - git checkout 命令
 
-`git checkout` 主要用於切換分支、建立新分支，以及==恢復檔案==
+`git checkout` 主要用於切換分支、**建立新分支**，以及**恢復檔案**。也就是說雖然他是對當前分支作動，但他無法做到像是 `git reset` 的行為，因為 checkout 產生的分支一定跟當前分支不同，reset 本身就是**對當前分支作動**
+ 
 #### 1. 切換分支
 
 ```bash
@@ -112,62 +113,66 @@ git checkout -b new-branch-name commit-hash
 git checkout -b local-branch origin/remote-branch
 ```
 
-參考：[git 基礎](git%20基礎.md)
+參考：[[git 基礎]]
 #### 3. 檢出檔案（恢復檔案到特定狀態）
 
 ```bash
 # 還原工作目錄中的檔案（放棄未 commit 的修改）
 git checkout -- file-name
+
 # 還原全部工作目錄檔案
 git checkout -- .
 
 # 從特定 commit 檢出檔案（不會進入 detached HEAD）
-git checkout commit-hash -- file-name
+git checkout <commit-hash> -- file-name
 ```
 
-⚠️ 注意：檔案檢出（有 `--`）不會造成 detached HEAD！！
+⚠️ 注意：檔案檢出的方式（指定某檔案，也就是 restore）**不會造成 detached HEAD，因為這種方式不會移動 HEAD！！** 也就是說如果我還原部分檔案，然後其他檔案也做了一些變更，這時候 `git add` 並 `git commit` 並不會造成 branch 的分叉~
+
+checkout 移動方式是「HEAD」的移動，可以想像成「視角」的移動，這點很重要而且滿有意思的。當我們 checkout 到某個 commit node 時，就像是精神體移動到那個節點去「查看」，這時要回去的時候需要 `git checkout <當前分支名稱>`。因此確定想要用這個 commit 節點 (HEAD 也在這個 commit) 開一個新的分支，就像是要把精神體實體化，這時直接下 `git branch <新分支名稱>` 建立新分支，或是 `git checkout -b <新分支名稱>` 建立新分支並移動過去
+
+==但是 git reset 不同==，git reset 是 HEAD 的移動，他是實際上會移動本體到 commit 節點上，只是說依照模式不同，會對 working directory (工作目錄)、staging area (暫存區) 做不同的操作
 
 參考：
 1. [與 Claude 的對話：Git HEAD、detached HEAD](https://claude.ai/chat/e9c428c2-7040-47bb-96f0-8fb82702b324)
-2. [關於 detached HEAD (斷頭) 狀態](關於%20detached%20HEAD%20(斷頭)%20狀態.md)
-3. [git reset 與 git rebase](git%20reset%20與%20git%20rebase.md)
+2. [[關於 detached HEAD (斷頭) 狀態]]
+3. [[git reset 與 git rebase]]
 #### 4. `git checkout` 的注意事項
 
 1. 自 Git 2.23 版開始，`git checkout` 的功能被分拆到兩個新命令：
 - `git switch` - 用於切換分支
 - `git restore` - 用於恢復檔案
-- 不過 `git checkout` 依然可以完全正常使用，沒有被棄用
+- 不過 `git checkout` 依然可以**完全正常使用，沒有被棄用**
 
-1. git switch 的基本用法：
+2. git switch 的基本用法：
 ```bash
 # 切換分支
 git switch branch-name
 
-# 建立並切換分支
+# 建立並切換分支`(等同於 checkout -b)
 git switch -c new-branch-name
 ```
 
-2. git restore 的基本用法：
+3. git restore 的基本用法：
 ```bash
-# 恢復工作目錄中的檔案
-git restore file-name
+# 丟棄工作目錄的修改（只影響工作目錄，不影響暫存區已 add 的內容）
+# 修改消失，回到 HEAD 的狀態
+git restore <file-name>
 
-# 從暫存區取消暫存
-git restore --staged file-name
+# 取消暫存（unstage）
+# 檔案回到工作目錄，修改還在
+git restore --staged <file-name>
 ```
+
+參考：[[git status ＆ git restore#- git restore|git restore]]
 #### 5. 常見組合使用場景
 
-1. 建立功能分支並立即切換：
-```bash
-git checkout -b feature/new-feature
-```
-
-2. 快速查看其他分支上的檔案然後返回：
+1. 快速查看其他分支上的檔案然後返回：
 ```bash
 git checkout other-branch -- path/to/file
 ```
 
-3. 建立基於遠端分支的本地開發分支：
+2. 建立基於遠端分支的本地開發分支：
 ```bash
 git checkout -b feature/fix-bug origin/develop
 ```

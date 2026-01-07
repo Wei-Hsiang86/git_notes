@@ -32,8 +32,9 @@ squash 66bcc45 feat:add new docker notes about dockerfile
 ```bash
 git push --force-with-lease origin main
 ```
+
 - 因為改變了歷史，需要使用強制推送
-- `--force-with-lease` 比純粹的 `--force` 更安全，它會檢查遠程分支在你 pull 之後是否有其他人的新提交
+- `--force-with-lease` 比純粹的 `--force` 更安全，它會檢查遠端分支在你 pull 之後，是否有其他人推了新的 commit
 
 這時候就可以安心通知團隊其他人員：「我對 main 分支進行了 rebase，你們需要重新拉取」
 ```bash
@@ -42,39 +43,59 @@ git reset --hard origin/main
 ```
 
 參考：
-1. [git 基礎](git%20基礎.md)
-2. [git 協作](git%20協作.md)
+1. [[git 基礎]]
+2. [[git 協作]]
 
 ### - 遇到的狀況
 
-看起來在 rebase 的過程中確實遇到了問題。你的本地工作目錄中有未提交的變更，而這些變更會被 rebase 過程覆蓋，所以 Git 中止了操作以防止你的本地變更被覆蓋
+```powershell
+PS C:\Users\Frank\OneDrive\桌面\工作\fhir\fhir_explorer> git rebase origin_gitlab/develop
+Auto-merging app/config.py
+CONFLICT (content): Merge conflict in app/config.py
+Auto-merging app/config.py
+CONFLICT (content): Merge conflict in app/config.py
+CONFLICT (content): Merge conflict in app/config.py
+error: could not apply 25bbb35... feat: 更新顯示文字
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+hint: Disable this message with "git config advice.mergeConflict false"
+Could not apply 25bbb35... feat: 更新顯示文字
+```
 
-根據 Git 提供的提示，你有幾個選項可以處理這個情況：
+本地工作目錄中有未提交的變更，而這些變更會被 rebase 過程覆蓋，所以 Git 中止了操作以防止本地變更被覆蓋。根據 Git 提供的提示，有幾個選項可以處理這個情況：
 
-#### 1. **提交你的變更**：
+#### 1. **提交目前的本地變更**：
+
 ```bash
 git add .obsidian/workspace.json
 git commit -m "更新 workspace 設定"
 ```
+   
    然後再繼續 rebase 操作
 
-#### 2. **暫存你的變更**：
+#### 2. **暫存目前的變更**：
+
 ```bash
 git stash
 ```
-   這會將你的未提交變更暫時儲存起來。完成 rebase 後，可以用 `git stash pop` 恢復這些變更
+   
+   這會將未提交變更暫時儲存起來。完成 rebase 後，可以用 `git stash pop` 恢復這些變更
 
-#### 3. **放棄你的變更**（如果 `.obsidian/workspace.json` 的變更不重要）：
+#### 3. **放棄目前的變更**（如果 `.obsidian/workspace.json` 的變更不重要）：
+
 ```bash
 git checkout -- .obsidian/workspace.json
 ```
 
-一旦處理完未提交的變更，你可以繼續 rebase 操作：
+一旦處理完未提交的變更，便可以繼續 rebase 操作：
 
-1. 如果你想要編輯 rebase 的指令：
+1. 如果想要編輯 rebase 的指令：
 ```bash
 git rebase --edit-todo
 ```
+   
    這會打開編輯器讓你修改 rebase 的任務清單
 
 2. 然後繼續 rebase：
@@ -82,8 +103,11 @@ git rebase --edit-todo
 git rebase --continue
 ```
 
-如果你想完全取消這次 rebase 操作，可以使用：
+如果想完全取消這次 rebase 操作，可以使用：
 ```bash
 git rebase --abort
 ```
+
 這會回到執行 rebase 前的狀態，你可以重新開始
+
+參考：[[git rebase 的衝突合併方向]]
