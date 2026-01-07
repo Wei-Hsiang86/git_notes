@@ -225,7 +225,7 @@ git switch feature/分支名稱
 在使用 `git push` 指令時，需要提供兩個資訊：
 
 - `origin`：要推送的 **遠端儲存庫名稱**，這裡 `origin` 是 GitHub 的預設名稱
-- `master`：這是想要推送的本地分支的名稱，如果沒有設定其他分支，預設的主要分支會叫 `master`。不過請注意自 2020.10 起，Github 因為[一些理由Links to an external site.](https://www.ithome.com.tw/news/140094)會把 `master` 重新命名叫 `main` (都是稱呼 **本地端的名字**)，也就是 `git branch -M main` 這行程式碼在做的事，這行代表幫 branch改名字
+- `master`：這是想要推送的本地分支的名稱，如果沒有設定其他分支，預設的主要分支會叫 `master`。不過請注意自 2020.10 起，Github 因為[一些理由](https://www.ithome.com.tw/news/140094)會把 `master` 重新命名叫 `main` (都是稱呼 **本地端的名字**)，也就是 `git branch -M main` 這行程式碼在做的事，這行代表幫 branch改名字
 
 ```bash
 Frank@?? MINGW64 ~/Desktop/git_repo (main)

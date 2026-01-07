@@ -136,4 +136,4 @@ Fork 這個字在這邊翻譯成「複製」並不是這個字的原意，Fork �
 1. [與其它開發者的互動 - 使用 Pull Request（PR）](https://gitbook.tw/chapters/github/pull-request)
 2. [git 基礎](git%20基礎.md)
 3. [git 遠端儲存庫 (remote repo) ＆ git push](git%20遠端儲存庫%20(remote%20repo)%20＆%20git%20push.md)
-4. [](git%20reset%20與%20git%20rebase.md#-%20合併特定%20Commit%20的案例|使用%20rebase%20需要注意什麼)
+4. [rebase 合併案例需要注意什麼](git%20reset%20與%20git%20rebase.md#-%20合併特定%20Commit%20的案例|使用%20rebase%20需要注意什麼)

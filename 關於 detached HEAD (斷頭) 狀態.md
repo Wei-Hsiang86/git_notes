@@ -84,4 +84,4 @@ rebase 也是一樣當前的 HEAD **仍然指向當前分支**，且因為 git �
 
 參考：
 1. [git reflog 與 ORIG_HEAD](git%20reflog%20與%20ORIG_HEAD.md)
-2. [](git%20清除機制.md#-%20術語說明|懸空與不可達的%20commits)
+2. [懸空與不可達的 commits](git%20清除機制.md#-%20術語說明|懸空與不可達的%20commits)

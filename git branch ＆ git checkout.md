@@ -164,7 +164,7 @@ git restore <file-name>
 git restore --staged <file-name>
 ```
 
-參考：[](git%20status%20＆%20git%20restore.md#-%20git%20restore|git%20restore)
+參考：[git restore](git%20status%20＆%20git%20restore.md#-%20git%20restore|git%20restore)
 #### 5. 常見組合使用場景
 
 1. 快速查看其他分支上的檔案然後返回：
