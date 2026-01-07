@@ -11,7 +11,7 @@ Git 有三個重要區域：
 git reset --可選參數 <遠端名稱儲存庫名>/<分支名稱>
 ```
 
-要小心別跟 pull 的寫法搞混，pull 是「動作 + 來源 + 目標」的概念，reset 是直接指定一個「參考點（ref）」，所以用斜線表示遠端分支。參考：[[git 協作]]
+要小心別跟 pull 的寫法搞混，pull 是「動作 + 來源 + 目標」的概念，reset 是直接指定一個「參考點（ref）」，所以用斜線表示遠端分支。參考：[git 協作](git%20協作.md)
 
 ```hash
 # 時間流
@@ -57,8 +57,8 @@ git reset --可選參數 <遠端名稱儲存庫名>/<分支名稱>
 - `--soft` 和 `--mixed` 都會保留檔案變更
 
 參考：
-1. [[git 基礎]]
-2. [[關於 detached HEAD (斷頭) 狀態]]
+1. [git 基礎](git%20基礎.md)
+2. [關於 detached HEAD (斷頭) 狀態](關於%20detached%20HEAD%20(斷頭)%20狀態.md)
 
 ### - git rebase
 
@@ -79,7 +79,7 @@ rebase 的運作方式是：
 2. 然後把你 `feature/converter` 的 commits **一個一個重播**上去
 
 參考：
-1. [[git rebase 的衝突合併方向]]
+1. [git rebase 的衝突合併方向](git%20rebase%20的衝突合併方向.md)
 2. [為自己學 git：rebase](https://gitbook.tw/chapters/branch/merge-with-rebase)
 ##### 2. 整理同分支的 commit 歷史
 ```bash
@@ -98,7 +98,7 @@ git rebase -i <起點>
 - 比 reset 更靈活，可以選擇性地處理特定的 commit
 - 會產生 dangling commits（懸空 commit），通常 git 會有回收機制
 
-參考：[[git 清除機制#- 術語說明|懸空與不可達的 commits]]
+參考：[](git%20清除機制.md#-%20術語說明|懸空與不可達的%20commits)
 #### ▸ 關於 git rebase 和工作目錄的關係
 
 1. **工作目錄狀態要求**：
@@ -127,7 +127,7 @@ git rebase origin_gitlab/develop
 
 如果有未提交的變更但仍然想執行 rebase，最安全的方法是使用 `git stash` 暫時保存這些變更，完成 rebase 後再用 `git stash pop` 恢復。總結來說，為了安全起見，執行 rebase 前最好確保工作目錄是乾淨的，或者將變更暫時保存起來
 
-參考：[[git rebase 遇到問題]]
+參考：[git rebase 遇到問題](git%20rebase%20遇到問題.md)
 #### ▸ git rebase -i 互動操作的動作
 
 互動式 rebase 中，時間順序是由遠到近的**由上往下排列** (log 是最近的當第一，後續越來越久遠)。大概的流程是：

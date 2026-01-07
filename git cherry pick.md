@@ -116,4 +116,4 @@ git cherry-pick <v2.0-feature-commit>
 ⚠️ **與 rebase 不同**
 - rebase 會處理整條 branch，但 cherry pick 不會
 
-參考：[[git reset 與 git rebase#- Git Rebase|git rebash]]
+參考：[](git%20reset%20與%20git%20rebase.md#-%20Git%20Rebase|git%20rebash)

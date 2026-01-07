@@ -34,10 +34,10 @@ git checkout -b branch-name
 
 參考：
 1. [與 Claude 的對話：Git HEAD、detached HEAD](https://claude.ai/chat/e9c428c2-7040-47bb-96f0-8fb82702b324)
-2. [[git branch ＆ git checkout]]
-3. [[git reset 與 git rebase]]
-4. [[git status ＆ git restore]]
-5. [[git 清除機制]]
+2. [git branch ＆ git checkout](git%20branch%20＆%20git%20checkout.md)
+3. [git reset 與 git rebase](git%20reset%20與%20git%20rebase.md)
+4. [git status ＆ git restore](git%20status%20＆%20git%20restore.md)
+5. [git 清除機制](git%20清除機制.md)
 
 #### - 需要 detached HEAD 的狀況
 
@@ -83,5 +83,5 @@ rebase 也是一樣當前的 HEAD **仍然指向當前分支**，且因為 git �
 但是呢，我們可以透過 `git reflog` 去找到這些 commit 的 SHA-1 (HASH) 值，並且透過 `git checkout` 造訪，這時候就可以正是說我們處在 **detached HEAD** 的狀態了 (雖然可能有點沒有意義)
 
 參考：
-1. [[git reflog 與 ORIG_HEAD]]
-2. [[git 清除機制#- 術語說明|懸空與不可達的 commits]]
+1. [git reflog 與 ORIG_HEAD](git%20reflog%20與%20ORIG_HEAD.md)
+2. [](git%20清除機制.md#-%20術語說明|懸空與不可達的%20commits)

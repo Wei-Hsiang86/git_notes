@@ -43,8 +43,8 @@ git reset --hard origin/main
 ```
 
 參考：
-1. [[git 基礎]]
-2. [[git 協作]]
+1. [git 基礎](git%20基礎.md)
+2. [git 協作](git%20協作.md)
 
 ### - 遇到的狀況
 
@@ -110,4 +110,4 @@ git rebase --abort
 
 這會回到執行 rebase 前的狀態，你可以重新開始
 
-參考：[[git rebase 的衝突合併方向]]
+參考：[git rebase 的衝突合併方向](git%20rebase%20的衝突合併方向.md)

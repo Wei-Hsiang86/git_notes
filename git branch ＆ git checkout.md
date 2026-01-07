@@ -14,7 +14,7 @@ HEAD 是指「現在目前分支的最新 commit 端點」，但可能不會是�
 
 `git branch` 和 `git checkout` 是 Git 工作流程中管理分支的重要命令，了解這些命令對於有效管理 Git 專案中的分支和工作流程非常重要，下面是說明還有常用的指令
 
-參考：[[git 清除機制]]
+參考：[git 清除機制](git%20清除機制.md)
 ### - git branch 命令
 
 `git branch` 主要用於建立、列出和刪除分支。另外要記得，因為 working-directory 跟 staging-area 都被 git 歸類為全域變數，所以說切換分支前最好要確保已經 commit，不然遇到同檔案的衝突就無法建立成功
@@ -85,7 +85,7 @@ git branch -u origin_github/dev
 
 來幫助使用者區分哪些是遠端分支（remote branches），哪些是本地分支（local branches）。這裡的「標籤」是指這些**視覺區分標記**，而不是 Git 技術概念中的 tag（標籤）或 branch name（分支名稱）本身。它是 GUI 工具為了提升使用者體驗而設計的視覺提示元素
 
-參考：[[git 遠端儲存庫 (remote repo) ＆ git push]]
+參考：[git 遠端儲存庫 (remote repo) ＆ git push](git%20遠端儲存庫%20(remote%20repo)%20＆%20git%20push.md)
 ### - git checkout 命令
 
 `git checkout` 主要用於切換分支、**建立新分支**，以及**恢復檔案**。也就是說雖然他是對當前分支作動，但他無法做到像是 `git reset` 的行為，因為 checkout 產生的分支一定跟當前分支不同，reset 本身就是**對當前分支作動**
@@ -113,7 +113,7 @@ git checkout -b new-branch-name commit-hash
 git checkout -b local-branch origin/remote-branch
 ```
 
-參考：[[git 基礎]]
+參考：[git 基礎](git%20基礎.md)
 #### 3. 檢出檔案（恢復檔案到特定狀態）
 
 ```bash
@@ -135,8 +135,8 @@ checkout 移動方式是「HEAD」的移動，可以想像成「視角」的移�
 
 參考：
 1. [與 Claude 的對話：Git HEAD、detached HEAD](https://claude.ai/chat/e9c428c2-7040-47bb-96f0-8fb82702b324)
-2. [[關於 detached HEAD (斷頭) 狀態]]
-3. [[git reset 與 git rebase]]
+2. [關於 detached HEAD (斷頭) 狀態](關於%20detached%20HEAD%20(斷頭)%20狀態.md)
+3. [git reset 與 git rebase](git%20reset%20與%20git%20rebase.md)
 #### 4. `git checkout` 的注意事項
 
 1. 自 Git 2.23 版開始，`git checkout` 的功能被分拆到兩個新命令：
@@ -164,7 +164,7 @@ git restore <file-name>
 git restore --staged <file-name>
 ```
 
-參考：[[git status ＆ git restore#- git restore|git restore]]
+參考：[](git%20status%20＆%20git%20restore.md#-%20git%20restore|git%20restore)
 #### 5. 常見組合使用場景
 
 1. 快速查看其他分支上的檔案然後返回：

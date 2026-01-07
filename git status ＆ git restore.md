@@ -103,9 +103,9 @@ git restore -SW <file-name> # 簡寫
 ```
 
 參考：
-1. [[git 基礎]]
-2. [[git branch ＆ git checkout]]
-3. [[git reset 與 git rebase]]
+1. [git 基礎](git%20基礎.md)
+2. [git branch ＆ git checkout](git%20branch%20＆%20git%20checkout.md)
+3. [git reset 與 git rebase](git%20reset%20與%20git%20rebase.md)
 
 ### - 指令快速參考表
 

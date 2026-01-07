@@ -60,4 +60,4 @@ git commit -m "important work"
 
 所以：**名稱就是入口，有入口就安全！**
 
-參考：[[git 清除機制#- 術語說明|懸空與不可達的 commits]]
+參考：[](.md#-%20術語說明|懸空與不可達的%20commits)

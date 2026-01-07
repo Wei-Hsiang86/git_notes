@@ -177,5 +177,5 @@ gh-pages: 網頁檔案（與 main 獨立）
 
 參考：
 
-1. [[git 清除機制]]
-2. [[關於 detached HEAD (斷頭) 狀態]]
+1. [git 清除機制](git%20清除機制.md)
+2. [關於 detached HEAD (斷頭) 狀態](關於%20detached%20HEAD%20(斷頭)%20狀態.md)

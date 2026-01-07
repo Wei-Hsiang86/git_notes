@@ -46,7 +46,7 @@ git commit -m "stop tracking node_modules"
 
 還有另外一點，假設我 main 分支的 ignore 在另外一個 A 分支**沒有記錄到**，這時候切到 A 分支上沒問題，但當要從 A 分支切回 main 的時候就會出現 untracked 的狀況，這時候看是要在 A 分支的 ignore 新增內容，這樣就可以繼續保留在工作目錄中，或者說先 stash 起來，切回 main 分支的時候再恢復
 
-參考：[[git stash]]
+參考：[git stash](git%20stash.md)
 ### - 萬用字元
 
 `.gitignore` 檔案可以使用萬用字元（wildcard）來處理多個資料夾。以下是一些常用的萬用字元模式：

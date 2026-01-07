@@ -35,4 +35,4 @@ git log --oneline REBASE_HEAD
 - `HEAD` → 目前基準點（develop 的內容 + 已成功重播的 commits）
 - `REBASE_HEAD` → 正在嘗試套用的那個 commit（你的）
 
-參考：[[git rebase 遇到問題]]
+參考：[git rebase 遇到問題](git%20rebase%20遇到問題.md)
